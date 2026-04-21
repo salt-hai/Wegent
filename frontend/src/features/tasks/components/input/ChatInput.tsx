@@ -627,9 +627,12 @@ export default function ChatInput({
         const newText = getTextWithNewlines(editableRef.current)
         setMessage(newText)
         setShowPlaceholder(!newText)
+
+        // Auto-scroll to bottom after paste (especially for multiline content)
+        scrollToBottom()
       }
     },
-    [isInputDisabled, setMessage, getTextWithNewlines, onPasteFile]
+    [isInputDisabled, setMessage, getTextWithNewlines, onPasteFile, scrollToBottom]
   )
 
   const handleFocus = useCallback(() => {
