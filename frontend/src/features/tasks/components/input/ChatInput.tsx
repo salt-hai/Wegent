@@ -122,6 +122,7 @@ export default function ChatInput({
   const editableRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLSpanElement>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const rafIdsRef = useRef<number[]>([])
   const [badgeWidth, setBadgeWidth] = useState(0)
 
   // Track if we should show placeholder
@@ -223,16 +224,28 @@ export default function ChatInput({
   // Auto-scroll to bottom when content changes
   // Uses requestAnimationFrame to ensure DOM has been rendered before scrolling
   const scrollToBottom = useCallback(() => {
-    if (scrollContainerRef.current) {
-      // Use double RAF to ensure the browser has completed layout and rendering
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight
-          }
-        })
-      })
+    if (!scrollContainerRef.current) {
+      return
     }
+
+    // Cancel any pending RAFs to prevent race conditions
+    rafIdsRef.current.forEach(id => cancelAnimationFrame(id))
+    rafIdsRef.current = []
+
+    // Use double RAF to ensure the browser has completed layout and rendering
+    const firstRafId = requestAnimationFrame(() => {
+      const secondRafId = requestAnimationFrame(() => {
+        // Check if component is still mounted and ref is valid
+        if (scrollContainerRef.current) {
+          scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight
+        }
+        // Clean up this RAF ID from tracking
+        rafIdsRef.current = rafIdsRef.current.filter(id => id !== secondRafId)
+      })
+      // Track both RAF IDs for cleanup
+      rafIdsRef.current.push(secondRafId)
+    })
+    rafIdsRef.current.push(firstRafId)
   }, [])
 
   // Sync contenteditable content with message prop
@@ -261,6 +274,14 @@ export default function ChatInput({
       }
     }
   }, [message, getTextWithNewlines, setContentWithNewlines, scrollToBottom])
+
+  // Cleanup: Cancel any pending RAFs when component unmounts
+  useEffect(() => {
+    return () => {
+      rafIdsRef.current.forEach(id => cancelAnimationFrame(id))
+      rafIdsRef.current = []
+    }
+  }, [])
 
   // Auto focus the input when autoFocus is true and not disabled
   useEffect(() => {
