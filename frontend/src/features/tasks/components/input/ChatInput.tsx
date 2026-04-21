@@ -221,9 +221,17 @@ export default function ChatInput({
   }, [])
 
   // Auto-scroll to bottom when content changes
+  // Uses requestAnimationFrame to ensure DOM has been rendered before scrolling
   const scrollToBottom = useCallback(() => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight
+      // Use double RAF to ensure the browser has completed layout and rendering
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight
+          }
+        })
+      })
     }
   }, [])
 
