@@ -121,6 +121,7 @@ export default function ChatInput({
   const { user } = useUser()
   const editableRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLSpanElement>(null)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [badgeWidth, setBadgeWidth] = useState(0)
 
   // Track if we should show placeholder
@@ -219,6 +220,13 @@ export default function ChatInput({
     element.innerHTML = htmlContent
   }, [])
 
+  // Auto-scroll to bottom when content changes
+  const scrollToBottom = useCallback(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight
+    }
+  }, [])
+
   // Sync contenteditable content with message prop
   useEffect(() => {
     if (editableRef.current) {
@@ -239,9 +247,12 @@ export default function ChatInput({
           selection.removeAllRanges()
           selection.addRange(range)
         }
+
+        // Scroll to bottom after content update
+        scrollToBottom()
       }
     }
-  }, [message, getTextWithNewlines, setContentWithNewlines])
+  }, [message, getTextWithNewlines, setContentWithNewlines, scrollToBottom])
 
   // Auto focus the input when autoFocus is true and not disabled
   useEffect(() => {
@@ -329,6 +340,9 @@ export default function ChatInput({
       setMessage(text)
       setShowPlaceholder(!text)
 
+      // Auto-scroll to bottom when content changes
+      scrollToBottom()
+
       // Helper function to get cursor position for autocomplete menus
       const getCursorPosition = () => {
         const selection = window.getSelection()
@@ -410,6 +424,7 @@ export default function ChatInput({
       showSkillSelector,
       availableSkills.length,
       showSkillMenu,
+      scrollToBottom,
     ]
   )
 
@@ -717,6 +732,7 @@ export default function ChatInput({
       {/* Scrollable container that includes both badge and editable content */}
       <div className="relative">
         <div
+          ref={scrollContainerRef}
           className="w-full custom-scrollbar transition-all duration-300 ease-in-out"
           style={{
             minHeight,
