@@ -40,6 +40,7 @@ class DocumentSourceType(str, Enum):
     TEXT = "text"
     TABLE = "table"
     WEB = "web"
+    ATTACHMENT = "attachment"
 
 
 class DocumentIndexStatus(str, Enum):
@@ -352,6 +353,7 @@ class KnowledgeDocumentResponse(BaseModel):
     file_size: int
     status: DocumentStatus
     user_id: int
+    created_by: Optional[str] = None  # Creator's username
     is_active: bool
     index_status: DocumentIndexStatus
     index_generation: int
@@ -764,7 +766,7 @@ class KnowledgeDocumentCreateV1(BaseModel):
         DocumentSourceType.TEXT,
         description=(
             "Document source type: 'text' (inline content), 'file' (base64 binary), "
-            "'web' (URL scraping)"
+            "'web' (URL scraping), 'attachment' (existing attachment ID)"
         ),
     )
     # source_type=text
@@ -789,6 +791,11 @@ class KnowledgeDocumentCreateV1(BaseModel):
     url: Optional[str] = Field(
         None,
         description="URL to scrape (required for source_type='web')",
+    )
+    # source_type=attachment
+    attachment_id: Optional[int] = Field(
+        None,
+        description="Attachment context ID (required for source_type='attachment')",
     )
     # common optional
     splitter_config: Optional[SplitterConfig] = Field(
