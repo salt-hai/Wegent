@@ -290,17 +290,17 @@ docker compose up -d     # 启动
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/yixiangxx">
-            <img src="https://avatars.githubusercontent.com/u/3120662?v=4" width="80;" alt="yixiangxx"/>
-            <br />
-            <sub><b>Yi Xiang</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/icycrystal4">
             <img src="https://avatars.githubusercontent.com/u/946207?v=4" width="80;" alt="icycrystal4"/>
             <br />
             <sub><b>Icycrystal4</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/yixiangxx">
+            <img src="https://avatars.githubusercontent.com/u/3120662?v=4" width="80;" alt="yixiangxx"/>
+            <br />
+            <sub><b>Yi Xiang</b></sub>
         </a>
     </td>
     <td align="center">
@@ -332,32 +332,32 @@ docker compose up -d     # 启动
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/sunnights">
+            <img src="https://avatars.githubusercontent.com/u/1886887?v=4" width="80;" alt="sunnights"/>
+            <br />
+            <sub><b>Jake Zhang</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/kerwin612">
             <img src="https://avatars.githubusercontent.com/u/3371163?v=4" width="80;" alt="kerwin612"/>
             <br />
             <sub><b>Kerwin Bryant</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/maquan0927">
             <img src="https://avatars.githubusercontent.com/u/40860588?v=4" width="80;" alt="maquan0927"/>
             <br />
             <sub><b>Just Quan</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/junbaor">
             <img src="https://avatars.githubusercontent.com/u/10198622?v=4" width="80;" alt="junbaor"/>
             <br />
             <sub><b>Junbaor</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/sunnights">
-            <img src="https://avatars.githubusercontent.com/u/1886887?v=4" width="80;" alt="sunnights"/>
-            <br />
-            <sub><b>Jake Zhang</b></sub>
         </a>
     </td>
     <td align="center">
@@ -382,6 +382,13 @@ docker compose up -d     # 启动
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/salt-hai">
+            <img src="https://avatars.githubusercontent.com/u/43851000?v=4" width="80;" alt="salt-hai"/>
+            <br />
+            <sub><b>Salt-hai</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/jolestar">
             <img src="https://avatars.githubusercontent.com/u/77268?v=4" width="80;" alt="jolestar"/>
             <br />
@@ -394,15 +401,15 @@ docker compose up -d     # 启动
             <br />
             <sub><b>Code-wangdi</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/haosenwang1018">
             <img src="https://avatars.githubusercontent.com/u/167664334?v=4" width="80;" alt="haosenwang1018"/>
             <br />
             <sub><b>Sense_wang</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/LiDaiyan">
             <img src="https://avatars.githubusercontent.com/u/36092701?v=4" width="80;" alt="LiDaiyan"/>
@@ -451,27 +458,20 @@ docker compose up -d     # 启动
             <br />
             <sub><b>Andrewzq777</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/graindt">
             <img src="https://avatars.githubusercontent.com/u/3962041?v=4" width="80;" alt="graindt"/>
             <br />
             <sub><b>Graindt</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/qingchengliu">
             <img src="https://avatars.githubusercontent.com/u/20255838?v=4" width="80;" alt="qingchengliu"/>
             <br />
             <sub><b>Qingcheng</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/salt-hai">
-            <img src="https://avatars.githubusercontent.com/u/43851000?v=4" width="80;" alt="salt-hai"/>
-            <br />
-            <sub><b>Salt-hai</b></sub>
         </a>
     </td>
     <td align="center">
